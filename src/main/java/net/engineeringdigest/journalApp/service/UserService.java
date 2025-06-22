@@ -21,7 +21,7 @@ public class UserService {
 
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public void saveEntry(User user){
+    public void saveNewUser(User user){
         try {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setRoles(Arrays.asList("USER"));
@@ -31,7 +31,7 @@ public class UserService {
         }
     }
 
-    public void saveNewUser(User user){
+    public void saveUser(User user){
         userRepository.save(user);
     }
 
@@ -50,4 +50,6 @@ public class UserService {
     public User findByUserName(String userName){
         return userRepository.findByUserName(userName);
     }
+
+
 }
